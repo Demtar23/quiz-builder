@@ -5,7 +5,11 @@ export const createQuizService = async (data: CreateQuizDTO) => {
   const quiz: any = await Quiz.create(
     {
       title: data.title,
-      Questions: data.questions,
+      Questions: data.questions.map((q) => ({
+        type: q.type,
+        text: q.text,
+        Options: q.options ?? [],
+      })),
     },
     {
       include: [{ model: Question, include: [Option] }],

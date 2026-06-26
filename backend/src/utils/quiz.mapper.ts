@@ -11,10 +11,11 @@ export const mapQuizDetail = (quiz: any) => ({
     id: q.id,
     type: q.type,
     text: q.text,
-    options: q.Options?.map((o: any) => ({
-      id: o.id,
-      text: o.text,
-      isCorrect: o.isCorrect,
-    })),
+    options:
+      q.Options?.map((o: any) => ({
+        id: o.id,
+        text: o.text,
+        isCorrect: o.isCorrect,
+      })) ?? [],
   })),
 });
